@@ -22,6 +22,12 @@ public class TransacaoController {
     @PostMapping
     public ResponseEntity<RespostaAPI> create(@Valid @RequestBody Transacao transacao){
         this.transacaoService.adicionar(transacao);
-        return RespostaAPI.build(HttpStatus.CREATED, "Requisição realizada com sucesso.");
+        return RespostaAPI.build(HttpStatus.CREATED, "A transação foi aceita com sucesso.");
+    }
+
+    @DeleteMapping
+    public ResponseEntity<RespostaAPI> delete(){
+        this.transacaoService.deletar();
+        return RespostaAPI.build(HttpStatus.OK, "Todas as informações foram apagadas com sucesso.");
     }
 }
