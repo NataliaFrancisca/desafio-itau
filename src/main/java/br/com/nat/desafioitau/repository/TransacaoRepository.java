@@ -20,4 +20,8 @@ public class TransacaoRepository {
     public void adicionarTransacao(Transacao transacao){
         this.transacoes.put(UUID.randomUUID(), transacao);
     }
+
+    public void deletarTransacoes(){
+        this.transacoes.clear();
+    }
 }
