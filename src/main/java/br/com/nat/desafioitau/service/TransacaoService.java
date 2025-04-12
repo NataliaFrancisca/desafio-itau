@@ -28,4 +28,8 @@ public class TransacaoService {
         this.validarTransacao(transacao);
         this.transacaoRepository.adicionarTransacao(transacao);
     }
+
+    public void deletar(){
+        this.transacaoRepository.deletarTransacoes();
+    }
 }
