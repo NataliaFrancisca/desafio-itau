@@ -1,4 +1,4 @@
-package br.com.nat.desafio_itau;
+package br.com.nat.desafioitau;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
