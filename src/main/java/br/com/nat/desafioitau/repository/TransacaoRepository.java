@@ -11,17 +11,17 @@ import java.util.UUID;
 @Component
 @Getter
 public class TransacaoRepository {
-    private Map<UUID, Transacao> transacoes;
+    private final Map<UUID, Transacao> transacoes;
 
     public TransacaoRepository(){
         this.transacoes = new HashMap<>();
     }
 
-    public void adicionarTransacao(Transacao transacao){
+    public void adicionar(Transacao transacao){
         this.transacoes.put(UUID.randomUUID(), transacao);
     }
 
-    public void deletarTransacoes(){
+    public void deletarTodos(){
         this.transacoes.clear();
     }
 }
