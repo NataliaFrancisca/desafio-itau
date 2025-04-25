@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
 
 @Service
 public class TransacaoService {
-    private TransacaoRepository transacaoRepository;
+    private final TransacaoRepository transacaoRepository;
 
     @Autowired
     public TransacaoService(TransacaoRepository transacaoRepository){
@@ -20,16 +20,16 @@ public class TransacaoService {
         OffsetDateTime dataRequisicao = OffsetDateTime.now();
 
         if(transacao.getValor() < 0 || transacao.getDataHora().isAfter(dataRequisicao)){
-            throw new IllegalArgumentException("A transação têm valores inválidos.");
+            throw new IllegalArgumentException();
         }
     }
 
     public void adicionar(Transacao transacao){
         this.validarTransacao(transacao);
-        this.transacaoRepository.adicionarTransacao(transacao);
+        this.transacaoRepository.adicionar(transacao);
     }
 
     public void deletar(){
-        this.transacaoRepository.deletarTransacoes();
+        this.transacaoRepository.deletarTodos();
     }
 }
