@@ -1,6 +1,5 @@
 package br.com.nat.desafioitau.controller;
 
-import br.com.nat.desafioitau.infra.RespostaAPI;
 import br.com.nat.desafioitau.model.Transacao;
 import br.com.nat.desafioitau.service.TransacaoService;
 import jakarta.validation.Valid;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/transacao")
 public class TransacaoController {
-    private TransacaoService transacaoService;
+    private final TransacaoService transacaoService;
 
     @Autowired
     public TransacaoController(TransacaoService transacaoService){
@@ -20,14 +19,14 @@ public class TransacaoController {
     }
 
     @PostMapping
-    public ResponseEntity<RespostaAPI> create(@Valid @RequestBody Transacao transacao){
+    public ResponseEntity<String> create(@Valid @RequestBody Transacao transacao){
         this.transacaoService.adicionar(transacao);
-        return RespostaAPI.build(HttpStatus.CREATED, "A transação foi aceita com sucesso.");
+        return ResponseEntity.status(HttpStatus.CREATED).body("A transação foi aceita com sucesso.");
     }
 
     @DeleteMapping
-    public ResponseEntity<RespostaAPI> delete(){
+    public ResponseEntity<String> delete(){
         this.transacaoService.deletar();
-        return RespostaAPI.build(HttpStatus.OK, "Todas as informações foram apagadas com sucesso.");
+        return ResponseEntity.status(HttpStatus.OK).body("Todas as informações foram apagadas com sucesso.");
     }
 }
