@@ -40,7 +40,7 @@ class TransacaoServiceTest {
         TransacaoRepository transacaoRepository = new TransacaoRepository();
         Transacao transacao = new Transacao(120.00, OffsetDateTime.now().minusSeconds(20));
 
-        transacaoRepository.adicionarTransacao(transacao);
+        transacaoRepository.adicionar(transacao);
 
         Assertions.assertEquals(1, transacaoRepository.getTransacoes().size());
         Assertions.assertTrue(transacaoRepository.getTransacoes().containsValue(transacao));
@@ -52,8 +52,8 @@ class TransacaoServiceTest {
         TransacaoRepository transacaoRepository = new TransacaoRepository();
         Transacao transacao = new Transacao(120.00, OffsetDateTime.now().minusSeconds(20));
 
-        transacaoRepository.adicionarTransacao(transacao);
-        transacaoRepository.deletarTransacoes();
+        transacaoRepository.adicionar(transacao);
+        transacaoRepository.deletarTodos();
 
         Assertions.assertEquals(0, transacaoRepository.getTransacoes().size());
     }
