@@ -16,8 +16,8 @@ public class GlobalException {
             JsonMappingException.class,
             HttpMessageNotReadableException.class
     })
-    public ResponseEntity<RespostaAPI> handleJsonInvalido(){
-        return RespostaAPI.build(HttpStatus.BAD_REQUEST, "O corpo da requisição não foi passado.");
+    public ResponseEntity<String> handleJsonInvalido(){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("O corpo da requisição não foi passado.");
     }
 
     @ExceptionHandler({
@@ -25,7 +25,7 @@ public class GlobalException {
             ConstraintViolationException.class,
             MethodArgumentNotValidException.class
     })
-    public ResponseEntity<RespostaAPI> handleCamposInvalidos(){
-        return RespostaAPI.build(HttpStatus.UNPROCESSABLE_ENTITY, "Campos inválidos.");
+    public ResponseEntity<String> handleCamposInvalidos(){
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("A requisição têm valores inválidos.");
     }
 }
