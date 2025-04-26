@@ -10,6 +10,6 @@ Criar uma API REST que recebe Transações e retorna Estatísticas sob essas tra
 - [X] endpoint ```GET/estatistica```
 
 ## Melhorias:
-- [ ] adicionar testes
+- [X] adicionar testes
 - [ ] criar logs
-- [ ] criar documentação com swagger
+- [X] criar documentação com swagger
