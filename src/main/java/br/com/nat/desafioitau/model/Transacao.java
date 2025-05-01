@@ -1,9 +1,7 @@
 package br.com.nat.desafioitau.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,11 +15,11 @@ import java.time.OffsetDateTime;
 @Setter
 public class Transacao {
     @NotNull
-    @Min(value = 0, message = "O valor deve ser igual ou maior que 0")
+    @Positive(message = "Deve ter valores positivos.")
     double valor;
 
     @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-    @Past
+    @PastOrPresent(message = "A transação deve ser realizada no passado, ou no presente.")
     OffsetDateTime dataHora;
 }
